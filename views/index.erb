@@ -1,1 +1,22 @@
-<h1>hello world</h1>
+
+<form action="/">
+  <label for="">Stock search</label><input type="text" name="stock" placeholder="Enter ASX code"><button>Submit</button>
+</form>
+
+<p><%= @stock %> <%= @quote %></p>
+<p><%= @parsed %></p>
+
+<% if logged_in? %>
+
+  <form action="/" method="post">
+  <input type="hidden" name="track" value="<%= @stock%>"> 
+  <p><button>Track</button></p>
+  </form>
+
+  <p>"Test" "Test" "Test"</p>
+  
+  <% @tracked.each do |stock| %>
+    <p><%= stock['stock_code'].upcase %><% @stock = stock['stock_code']%><%= get_quote %></p>
+  <% end %>  
+
+<% end %>

@@ -1,0 +1,21 @@
+<h2>Edit User</h2>
+
+<form action="/edit_user" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Name</label>
+  <input type="text" name="name" value="<%= @user['name'] %>">
+  
+  <label>Email</label>
+  <input type="text" name="email" value="<%= @user['email']%>">
+
+  <label>Password</label>
+  <input type="password" name="password" value="">
+  
+  <button>Submit</button>
+</form>
+Delete User & Tracker ?
+<form action="/edit_user" method="post">
+  <input type="hidden" name="_method" value="delete">  
+<button>Delete User</button>  
+</form>

@@ -2,11 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World</title>
-  <link rel='stylesheet' href='/stylesheets/main.css'>
-</head>
+  <title>My Stock Tracker</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head>
 <body>
+<%= session[:user_id] %>
+
+  <% if logged_in? %>
+
+    Welcome, <%= current_user.name %>
+    <a href="/edit_user"><button>Edit User</button></a>
+    <form action="/session" method="post">
+    <input type="hidden" name="_method" value="delete">    
+      <button>Logout</button>
+    </form>
+    <a href="/tracker"><button>My Tracker</button></a>
+  <% else %>
+    <a href="/signup">New User</a>
+    <a href="/login"><button>Sign In</button></a>
+  <% end %>
+  
+  <h1>My Stock Tracker</h1>
 
   <%= yield %>
 
 </body>
+</html>
