@@ -10,6 +10,10 @@
       background-image:url("/imgs/vintage-leaves.png");
       background-size: cover;
     }   
+
+    .nav navbar-nav navbar-right {
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -31,7 +35,7 @@
         <form action="/session" method="post">
         <input type="hidden" name="_method" value="delete">  
         <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-log-out"></span> Log out </button>
-        </form>
+        </form> 
       <% else %>
         <ul>
         <li><a href="/signup"><button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-user"></span> New User </button></a></li>
