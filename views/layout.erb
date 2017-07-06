@@ -2,30 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Stock Tracker</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head>
+  <style type="text/css">
+    body {
+      background-image:url("/imgs/vintage-leaves.png");
+      background-size: cover;
+    }   
+  </style>
+</head>
+
 <body>
-<%= session[:user_id] %>
+<!-- # <%= session[:user_id] %> -->
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">My Stock Tracker</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/tracker">Tracker</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        Welcome, <%= current_user.name %>
+        <form action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">  
+        <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-log-out"></span> Log out </button>
+        </form>
+      <% else %>
+        <ul>
+        <li><a href="/signup"><button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-user"></span> New User </button></a></li>
+        <li><a href="/login"><button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-log-in"></span> Sign In </button></a></li>
+      </ul>
+      <% end %>
+
+<!--       <%# if logged_in? %>
+        <form action="/session" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-log-out"></span></button> Logout</form>
+      <%# else %>
+      <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> New User</a></li>
+      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <%# end %>
+    </ul> -->
+  </div>
+</nav>
+  
   <% if logged_in? %>
-
     Welcome, <%= current_user.name %>
-    <a href="/edit_user"><button>Edit User</button></a>
+    <!-- <a href="/edit_user"><button>Edit User</button></a> -->
     <form action="/session" method="post">
     <input type="hidden" name="_method" value="delete">    
       <button>Logout</button>
     </form>
-    <a href="/tracker"><button>My Tracker</button></a>
-  <% else %>
+    <% end %>
+<!--     <a href="/tracker"><button>My Tracker</button></a>
+  <%# else %>
     <a href="/signup">New User</a>
     <a href="/login"><button>Sign In</button></a>
-  <% end %>
-  
+  <%# end %>
+ -->  
   <h1>My Stock Tracker</h1>
 
   <%= yield %>
+<div class="container">
+  <h3>Right Aligned Navbar</h3>
+  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
+</div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
