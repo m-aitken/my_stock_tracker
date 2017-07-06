@@ -11,14 +11,14 @@
       background-size: cover;
     }   
 
-    .nav navbar-nav navbar-right {
-      display: inline-block;
+    .nav.navbar-nav.navbar-right ul {
+      display: inline-flex;
+      list-style-type: none;
     }
   </style>
 </head>
 
 <body>
-<!-- # <%= session[:user_id] %> -->
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -27,15 +27,16 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="/tracker">Tracker</a></li>
+      <% if logged_in? %>  
+        <li><a href="/tracker">Tracker</a></li>
+      <% end %>   
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <% if logged_in? %>
-        Welcome, <%= current_user.name %>
-        <form action="/session" method="post">
-        <input type="hidden" name="_method" value="delete">  
-        <button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-log-out"></span> Log out </button>
-        </form> 
+    <% if logged_in? %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method" value="delete">  
+      <button class="btn btn-default btn-md"><span class="glyphicon glyphicon-log-out"></span> Log out </button>
+      </form> 
       <% else %>
         <ul>
         <li><a href="/signup"><button type="button" class="btn btn-default btn-md"><span class="glyphicon glyphicon-user"></span> New User </button></a></li>
@@ -43,39 +44,25 @@
       </ul>
       <% end %>
 
-<!--       <%# if logged_in? %>
-        <form action="/session" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-log-out"></span></button> Logout</form>
-      <%# else %>
-      <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> New User</a></li>
-      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <%# end %>
-    </ul> -->
   </div>
 </nav>
   
   <% if logged_in? %>
-    Welcome, <%= current_user.name %>
-    <!-- <a href="/edit_user"><button>Edit User</button></a> -->
-    <form action="/session" method="post">
-    <input type="hidden" name="_method" value="delete">    
-      <button>Logout</button>
-    </form>
+    <h3>Welcome, <%= current_user.name %></h3>
     <% end %>
-<!--     <a href="/tracker"><button>My Tracker</button></a>
-  <%# else %>
-    <a href="/signup">New User</a>
-    <a href="/login"><button>Sign In</button></a>
-  <%# end %>
- -->  
+
   <h1>My Stock Tracker</h1>
 
   <%= yield %>
-<div class="container">
-  <h3>Right Aligned Navbar</h3>
-  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
-</div>
+
+  <div class="container">  
+    <% if logged_in? %>
+      <h2>Tracked Stocks</h2>
+        <% @tracked.each do |stock| %>
+        <p><%= stock['stock_code'].upcase %><% @stock = stock['stock_code']%> <%= get_quote %></p>
+        <% end %>  
+    <% end %>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

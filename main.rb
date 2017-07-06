@@ -26,11 +26,14 @@ helpers do
     @quote = "$#{@parsed['last_price']}"
   end
 
+  def untrack
+    Stock.delete(@stock)
+  end
 end  
 
 get '/' do
   if params[:stock] != nil
-  @stock = params[:stock]
+  @stock = params[:stock].upcase
   get_quote
   end
   @tracked = Stock.where(user_id: session[:user_id])
@@ -45,6 +48,13 @@ end
 get '/tracker' do
   @tracked = Stock.where(user_id: session[:user_id])
   erb :tracker
+end
+
+delete '/tracker' do
+ # @tracked = Stock.where(user_id: session[:user_id])
+  @stock = params[:stock]
+  untrack
+  redirect '/tracker'
 end
 
 get '/signup' do

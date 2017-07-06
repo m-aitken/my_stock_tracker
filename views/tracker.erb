@@ -1,14 +1,15 @@
 <h2>My Tracker</h2>
-<a href="/"><button>Home</button></a>
 List of tracked stock codes shown here.
 
 <ul>
   <% @tracked.each do |stock| %>
-    <li><%= stock['stock_code'].upcase %> UserID <%= stock['user_id'] %></li>
+    <li><h4><%= stock['stock_code'].upcase %> UserID <%= stock['user_id'] %>
+    StockID <%= @stock = stock['id'] %></h4> 
+  <form action="/tracker" method="post">
+  <input type="hidden" name="_method" value="delete">  
+  <button>Remove</button> 
+  </form>
+  </li>
   <% end %>
 </ul>
 
-Append Button at end to 'Remove' (from tracking)
-
-<!-- d = Stock.find_by(stock_code: ) -->
-<!-- d.delete -->
