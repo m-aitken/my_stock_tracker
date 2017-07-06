@@ -3,11 +3,11 @@ List of tracked stock codes shown here.
 
 <ul>
   <% @tracked.each do |stock| %>
-    <li><h4><%= stock['stock_code'].upcase %> UserID <%= stock['user_id'] %>
-    StockID <%= @stock = stock['id'] %></h4> 
+    <% @stock = stock %>
+    <li><h4><%= stock['stock_code'].upcase %></h4> 
   <form action="/tracker" method="post">
   <input type="hidden" name="_method" value="delete">  
-  <button>Remove</button> 
+  <button name="id" value="<%= @stock['id'] %>">Remove</button> 
   </form>
   </li>
   <% end %>

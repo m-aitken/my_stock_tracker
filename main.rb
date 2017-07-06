@@ -1,7 +1,7 @@
 
-# require 'pry'     
+require 'pry'     
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'httparty'
 
 require_relative 'db_config'
@@ -52,7 +52,8 @@ end
 
 delete '/tracker' do
  # @tracked = Stock.where(user_id: session[:user_id])
-  @stock = params[:stock]
+# binding.pry
+  @stock = params[:id]
   untrack
   redirect '/tracker'
 end
