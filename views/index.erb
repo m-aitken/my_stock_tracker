@@ -3,15 +3,13 @@
   <label for="">Stock search</label><input type="text" name="stock" placeholder="Enter ASX code"><button>Submit</button>
 </form>
 
-<p><%= @stock %> <%= @quote %></p>
+<p><h3><%= @stock %> <%= @quote %></h3></p>
 <p><%= @parsed %></p>
 
 
 <% if logged_in? %>
-
   <form action="/" method="post">
   <input type="hidden" name="track" value="<%= @stock%>"> 
   <p><button>Track</button></p>
   </form>
-
 <% end %>

@@ -1,5 +1,5 @@
 
-require 'pry'     
+# require 'pry'     
 require 'sinatra'
 require 'sinatra/reloader'
 require 'httparty'
@@ -51,8 +51,6 @@ get '/tracker' do
 end
 
 delete '/tracker' do
- # @tracked = Stock.where(user_id: session[:user_id])
-# binding.pry
   @stock = params[:id]
   untrack
   redirect '/tracker'
@@ -71,15 +69,14 @@ get '/edit_user' do
   erb :edit_user
 end
 
-patch '/edit_user' do
-# update user details
-  @user = User.find(session[:user_id])
-  # @user.name = params[:name]
-  # @user.email = params[:email]
-  # @user.password = params[:password]  
-  # @user.save
-  redirect '/'
-end
+# patch '/edit_user' do
+#   @user = User.find(session[:user_id])
+#   # @user.name = params[:name]
+#   # @user.email = params[:email]
+#   # @user.password = params[:password]  
+#   # @user.save
+#   redirect '/'
+# end
 
 delete '/edit_user' do
 # delete user & tracker
@@ -89,7 +86,6 @@ delete '/edit_user' do
   Stock.where(user_id: session[:user_id]).destroy_all
   redirect '/'
 end
-
 
 get '/login' do
   erb :login
