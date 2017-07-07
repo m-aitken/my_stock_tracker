@@ -11,7 +11,7 @@ I decided to build a lightweight, clean app to allow quick ASX stock code lookup
 
 ### App deployed on Heroku:
 
-The app can be accessed via the following link: (https://boiling-headland-83806.herokuapp.com/)
+The app can be accessed via the following link: [https://boiling-headland-83806.herokuapp.com/](https://boiling-headland-83806.herokuapp.com/)
 
 
 ---
@@ -22,7 +22,7 @@ I immediately had a clear idea of functionality, and was able to draw up some wi
 
 While the app in its current form has deviated a little from the wireframes, I will revist and develop the design for better mobile viewing.
 
-Wireframe drawings can be viewed at: (http://imgur.com/a/9zs45)
+Wireframe drawings can be viewed at: [http://imgur.com/a/9zs45](http://imgur.com/a/9zs45)
 
 ---
 
