@@ -1,15 +1,25 @@
 
 <form action="/">
-  <label for="">Stock search</label><input type="text" name="stock" placeholder="Enter ASX code"><button>Submit</button>
+  <label for=""><h4>Stock search</h4></label><input type="text" name="stock" placeholder="Enter ASX code"> <button class="btn btn-sm btn-primary">Submit</button>
 </form>
 
 <p><h3><%= @stock %> <%= @quote %></h3></p>
-<p><%= @parsed %></p>
+<!-- <p><%= @parsed %></p> -->
+
+<% if params[:stock] != nil %>
+<ul>
+  <li>Intraday Change: $<%= @parsed['change_price'] %></li>
+  <li>Percent Change: <%= @parsed['change_in_percent'] %></li>
+  <li>Today Open Price: $<%= @parsed['open_price'] %></li>
+  <li>Yesterday Close Price: $<%= @parsed['previous_close_price'] %></li>
+</ul>
+<% end %>
+
 
 
 <% if logged_in? %>
   <form action="/" method="post">
   <input type="hidden" name="track" value="<%= @stock%>"> 
-  <p><button>Track</button></p>
+  <p><button class="btn btn-sm btn-primary">Track</button></p>
   </form>
 <% end %>

@@ -78,14 +78,14 @@ end
 #   redirect '/'
 # end
 
-delete '/edit_user' do
-# delete user & tracker
-  @user = User.find(session[:user_id])
-  User.delete(@user['id']) 
-  # @tracker = Stock.where(user_id: session[:user_id])
-  Stock.where(user_id: session[:user_id]).destroy_all
-  redirect '/'
-end
+# delete '/edit_user' do
+# # delete user & tracker
+#   @user = User.find(session[:user_id])
+#   User.delete(@user['id']) 
+#   # @tracker = Stock.where(user_id: session[:user_id])
+#   Stock.where(user_id: session[:user_id]).destroy_all
+#   redirect '/'
+# end
 
 get '/login' do
   erb :login

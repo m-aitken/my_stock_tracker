@@ -5,27 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Stock Tracker</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <style type="text/css">
-    body {
-      background-image:url("/imgs/vintage-leaves.png");
-      background-size: cover;
-    }   
-
-    .nav.navbar-nav.navbar-right ul {
-      display: inline-flex;
-      list-style-type: none;
-    }
-  </style>
+  <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">My Stock Tracker</a>
+        <a class="navbar-brand" href="/">My Stock Tracker</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
+        <li class="active"><a href="/">Search</a></li>
         <% if logged_in? %>  
           <li><a href="/tracker">Tracker</a></li>
         <% end %>   
@@ -55,9 +45,9 @@
 
   <div class="container">  
     <% if logged_in? %>
-      <h2>Tracked Stocks</h2>
+      <h2><em>Tracked Stocks</em></h2>
         <% @tracked.each do |stock| %>
-        <p><%= stock['stock_code'].upcase %><% @stock = stock['stock_code']%> <%= get_quote %></p>
+        <p><h4><%= stock['stock_code'].upcase %><% @stock = stock['stock_code']%> <%= get_quote %></h4></p>
         <% end %>  
     <% end %>
   </div>

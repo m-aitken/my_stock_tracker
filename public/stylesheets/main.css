@@ -1,3 +1,12 @@
-/*body {
-  background-image: url("/imgs/vintage-leaves.png");
-};*/
+body {
+  background-image:url("/imgs/vintage-leaves.png");
+  background-size: cover;
+}   
+
+.nav.navbar-nav.navbar-right ul {
+  display: inline-flex;
+}
+
+ul {
+  list-style-type: none;
+}

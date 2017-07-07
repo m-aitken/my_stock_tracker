@@ -1,4 +1,4 @@
-<h2>My Tracker</h2>
+<h2><em>My Tracker</em></h2>
 List of tracked stock codes shown here.
 
 <ul>
@@ -6,8 +6,7 @@ List of tracked stock codes shown here.
     <% @stock = stock %>
     <li><h4><%= stock['stock_code'].upcase %></h4> 
     <form action="/tracker" method="post">
-    <input type="hidden" name="_method" value="delete">  
-    <button name="id" value="<%= @stock['id'] %>">Remove</button> 
+    <input type="hidden" name="_method" value="delete"> <button class="btn btn-sm btn-primary" name="id" value="<%= @stock['id'] %>">Remove</button> 
     </form>
     </li>
   <% end %>
