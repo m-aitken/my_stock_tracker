@@ -11,7 +11,7 @@ I decided to build a lightweight, clean app to allow quick ASX stock code lookup
 
 ### App deployed on Heroku:
 
-The app can be accessed via the following link: https://boiling-headland-83806.herokuapp.com/
+The app can be accessed via the following link: (https://boiling-headland-83806.herokuapp.com/)
 
 
 ---
@@ -20,9 +20,28 @@ The app can be accessed via the following link: https://boiling-headland-83806.h
 
 I immediately had a clear idea of functionality, and was able to draw up some wireframes of features, buttons and such that would be needed.
 
-While the app in its current form has deviated a little from the wireframes, I will revist and develop the design for mobile viewing.
+While the app in its current form has deviated a little from the wireframes, I will revist and develop the design for better mobile viewing.
 
-Wireframe drawings can be viewed at: http://imgur.com/a/9zs45
+Wireframe drawings can be viewed at: (http://imgur.com/a/9zs45)
+
+---
+
+### App design, functionality and programming approach
+
+As mentioned above, I really wanted this app to be 'lightweight' - so I can easily keep a browser open at this page all day on my smartphone,  refreshing the page/prices every so often to see intra-day stock price movement.
+
+My app requires little navigation away from the main landing page, designed for the User to remain with stock search and price results viewing, reloading as needed.
+Using this app assumes the User knows the precise ASX stock code desired - the search function will not return a list of 'nearest matches' though this is intended. 
+The 'hero' return result is the current market price for the requested stock code. Other daily stock details such as "Open Price", "Yesterday Close Price" and movement % may be implemented in future.
+
+A User may create a profile so that when signed in to the app, any searched stock code may be added to a persistent 'Tracker'. 
+The User profile information is stored in an individual database table, as are the tracked stocks. When a User adds a stock code to their 'Tracker', a record is created in the stock table, including their User ID.
+
+When signed in, the app will look to the current User profile ID and refer to the stock table to return all tracked stocks for that unique profile ID.
+The tracked stocks will thereafter be shown on the main view, allowing the User to get at-a-glance pricing for all tracked stocks simultaneously.
+At any time, the signed in User may visit their 'Tracker', where the current listing of tracked codes are displayed, each including a 'Remove' function so as to delete any unwanted stocks from being linked to their profile.
+
+These User actions directly refer to a relational database: User profile records include password encryption, and stock codes are recorded with corresponding user profile ID for app reference. 
 
 ---
 
