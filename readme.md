@@ -9,10 +9,12 @@ My second project, and first foray into **building a full-stack database backed 
 I'm a keen trader(when I have the time), and as such I use a variety of trader platforms to keep an eye on intra-day pricing. However these can be quite cumbersome when viewing on my smartphone !
 I decided to build a lightweight, clean app to allow quick ASX stock code lookup, show me the current market price, and allow a simple login service for me to 'track' a selection of stocks at a glance. These features, and the design, are also intended to be easily used on my smartphone. 
 
-### App deployed on Heroku:
+#### App deployed on Heroku:
 
 The app can be accessed via the following link: [https://boiling-headland-83806.herokuapp.com/](https://boiling-headland-83806.herokuapp.com/)
+#### App code stored on GitHub:
 
+GitHub repo is found at: [https://github.com/m-aitken/my_stock_tracker](https://github.com/m-aitken/my_stock_tracker)
 
 ---
 
